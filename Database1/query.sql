@@ -1,6 +1,4 @@
-﻿
-
-USE DataSolving;
+﻿USE DataSolving;
 GO
 SELECT  
 M.country_id,
@@ -12,3 +10,20 @@ M.countCity FROM (SELECT
                   GROUP BY country_id) AS M
 JOIN Countries AS C
 ON M.country_id = C.Id
+
+
+
+SELECT DISTINCT
+K.id, 
+K.name,
+COUNT(country_id) OVER(PARTITION  BY country_id ) AS countCity
+FROM Cities  AS S
+RIGHT JOIN Countries AS K
+ON S.country_id = K.Id
+
+
+
+
+
+
+
